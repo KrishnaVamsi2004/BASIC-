@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeFeast-Taste Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('m.avif') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .navbar {
+            background-color: #2C3E50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .menu-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .menu-category {
+            background: rgba(255, 255, 255, 0.9);
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            text-align: center;
+        }
+
+        .menu-category img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .menu-category h2 {
+            color: #2C3E50;
+            margin-bottom: 10px;
+        }
+
+        .menu-category p {
+            margin: 5px 0;
+        }
+
+        .order-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .order-button:hover {
+            background-color: #219150;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .order-btn {
+            background-color:ff914d ;
+            color: #ff914d;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .order-btn:hover {
+            background-color: rgb(246, 121, 5);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">🍽️ Home Feast</div>
+        <ul class="nav-links">
+            <li><a href="make.html">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="About.html">About Us</a></li>
+            <li><a href="login.html">Logout</li>
+            <li><a href="#">Contact</a></li>
+            
+            <li><a href="#" class="order-btn">Order Now</a></li>
+        </ul>
+    </div>
+    </div>
+
+    <div class="menu-container"></div>
+
+    <script>
+        const menuItems = [
+            { name: "Sunita’s Healthy Homely Meals", type: "Veg", description: "Prepares nutritious and balanced meals for hospital patients and elderly individuals.", img: "sunita.jpg" },
+            { name: "Ayesha’s Corporate Lunchbox", type: "Non-Veg & Veg", description: "Specializes in quick, wholesome, and balanced meals for office-goers.", img: "ayesha.jpg" },
+            { name: "Renu’s Diabetic-Friendly Meals", type: "Veg", description: "Provides low-sugar, high-fiber meals for diabetic patients.", img: "renu.jpg" },
+            { name: "Priya’s Iron-Rich Kitchen", type: "Veg & Non-Veg", description: "Specializes in iron-rich meals for anemic patients and women’s health.", img: "priya.jpg" },
+            { name: "Meera’s Postpartum Meals", type: "Veg & Non-Veg", description: "Nutritious food for new mothers to help with recovery and lactation.", img: "meera.jpg" },
+            { name: "Fatima’s Festive Platters", type: "Veg & Non-Veg", description: "Specializes in special occasion meal platters for families and corporate events.", img: "fatima.jpg" },
+            { name: "Sita’s South Indian Delights", type: "Veg", description: "Offers traditional South Indian meals with fresh homemade flavors.", img: "sita.jpg" },
+            { name: "Latha’s Weight Loss Kitchen", type: "Veg & Non-Veg", description: "Specializes in low-carb and healthy meals for weight loss.", img: "latha.jpg" },
+            { name: "Rekha’s Satvik Bhojan", type: "Pure Veg", description: "Provides simple, sattvic, and light meals based on Ayurveda principles.", img: "rekha.jpg" },
+            { name: "Anjali’s Tiffin Service", type: "Veg & Non-Veg", description: "Prepares affordable daily tiffin meals for students and bachelors.", img: "anjali.jpg" },
+            { name: "Nandini’s Combo Meal Specials", type: "Veg & Non-Veg", description: "Provides value meal combos for groups and parties.", img: "nandini.jpg" },
+            { name: "Kavitha’s Protein Kitchen", type: "Non-Veg & Veg", description: "Specializes in high-protein meals for gym-goers and fitness enthusiasts.", img: "kavitha.jpg" }
+        ];
+
+        const menuContainer = document.querySelector('.menu-container');
+
+        menuItems.forEach(item => {
+            menuContainer.innerHTML += `
+                <div class="menu-category">
+                    <img src="${item.img}" alt="${item.name}">
+                    <h2>${item.name}</h2>
+                    <p>Type: ${item.type}</p>
+                    <p>${item.description}</p>
+                    <button class="order-button">Order Now</button>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
+
